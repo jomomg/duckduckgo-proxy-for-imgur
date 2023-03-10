@@ -1,13 +1,16 @@
 "use strict";
 
 const proxyDomainLink = 'https://proxy.duckduckgo.com/iu/?u=';
-const aLinks = document.querySelectorAll("a[href^='https://i.imgur.com'], a[href^='https://i.ibb.co'");
-const imgLinks = document.querySelectorAll("img[src^='https://i.imgur.com'], img[src^='https://i.ibb.co'");
+const targetDomains = ['https://i.imgur.com', 'https://i.ibb.co'];
+const cssSelectors = targetDomains.map(domain => `a[href^='${domain}'],img[src^='${domain}']`);
+const links = document.querySelectorAll(cssSelectors.join(','));
 
-for (const link of aLinks) {
-    link.href = proxyDomainLink + link.href;
-};
 
-for (const link of imgLinks) {
-    link.src = proxyDomainLink + link.src;
+for (const link of links) {
+    if (link.tagName === 'A') {
+        link.href = proxyDomainLink + link.href;
+    }
+    if (link.tagName === 'IMG') {
+        link.src = proxyDomainLink + link.src;
+    }
 };
