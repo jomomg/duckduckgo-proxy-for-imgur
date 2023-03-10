@@ -26,5 +26,19 @@
             "regexFilter": "(^https://i\\.imgur\\.com/[\\S]{3,7}\\.[a-z]{3,4})",
             "resourceTypes": ["image"]
         }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "https://proxy.duckduckgo.com/iu/?u=\\1"
+            }
+        },
+        "condition": {
+            "regexFilter": "(^i\\.imgur\\.com/[\\S]{3,7}\\.[a-z]{3,4})",
+            "resourceTypes": ["image"]
+        }
     }
 ]

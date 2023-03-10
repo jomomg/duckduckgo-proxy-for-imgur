@@ -17,5 +17,11 @@
                 "path": "rules.json"
             }
         ]
-    }
+    },
+    "content_scripts": [
+        {
+            "js": ["content.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
